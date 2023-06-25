@@ -1,7 +1,6 @@
 package eajufrn.fruitsystem2.domain;
 
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
