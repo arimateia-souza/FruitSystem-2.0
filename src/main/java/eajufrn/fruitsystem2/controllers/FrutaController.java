@@ -22,7 +22,7 @@ public class FrutaController {
     }
 
 
-    @GetMapping("/listar")
+    @GetMapping
     public List<Fruta> listar(){
         return this.frutaService.listarFrutas();
     }
