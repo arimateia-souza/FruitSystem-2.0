@@ -6,7 +6,6 @@ import java.util.List;
 
 
 
-@Service
 public interface IGenericService<E extends AbstractEntity> {
 
     public E create(E e);

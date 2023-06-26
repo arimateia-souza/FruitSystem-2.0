@@ -3,6 +3,7 @@ package eajufrn.fruitsystem2.service;
 import eajufrn.fruitsystem2.domain.AbstractEntity;
 import eajufrn.fruitsystem2.repository.IGenericRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

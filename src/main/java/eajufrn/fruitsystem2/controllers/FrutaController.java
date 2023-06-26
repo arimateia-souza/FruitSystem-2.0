@@ -15,7 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/fruta")
 public class FrutaController {
-
     private FrutaService frutaService;
 
     public FrutaController(FrutaService frutaService) {
