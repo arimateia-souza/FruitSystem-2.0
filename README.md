@@ -1,10 +1,12 @@
 # 3º Avaliação de PW 🧑‍💻
 
+### 👨‍🏫 DOCENTE:
+- Taniro Chacon 
 
 ### 👨‍🎓 DISCENTES:
-- Arimatéia
-- Nivea
-- Lara
+- Arimatéia Souza
+- Nivea Stelmam
+- Lara Belo
 
 ### API RESTFUL:
 - VERBOS
@@ -19,6 +21,7 @@
 - CORS
 - AUTENTICAÇÃO STATELES (JSON WEB TOKEN)
 - CONTROLLER ADVISOR
+
 
 
 
