@@ -4,11 +4,13 @@ package eajufrn.fruitsystem2.controllers;
 
 import eajufrn.fruitsystem2.domain.Fruta;
 import eajufrn.fruitsystem2.service.FrutaService;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -16,8 +18,6 @@ import java.util.List;
 public class FrutaController {
     private FrutaService frutaService;
     ModelMapper mapper;
-
-
 
     public FrutaController(FrutaService frutaService, ModelMapper mapper) {
         this.frutaService = frutaService;
@@ -30,7 +30,6 @@ public class FrutaController {
     public Fruta.DtoResponse cadastrar(@RequestBody Fruta.DtoRequest f){
 
         Fruta fruta = this.frutaService.create(Fruta.DtoRequest.convertToEntity(f, mapper));
-
         Fruta.DtoResponse response = Fruta.DtoResponse.convertToDto(fruta, mapper);
 
         return response;
@@ -38,9 +37,16 @@ public class FrutaController {
 
 
     @GetMapping
-    public List<Fruta> listar(){
-        return this.frutaService.list();
+    public List<Fruta.DtoResponse> listar() {
+        List<Fruta> frutas = this.frutaService.list();
+
+        List<Fruta.DtoResponse> frutasDto = frutas.stream()
+                .map(fruta -> Fruta.DtoResponse.convertToDto(fruta, mapper))
+                .collect(Collectors.toList());
+
+        return frutasDto;
     }
+
 
 
 

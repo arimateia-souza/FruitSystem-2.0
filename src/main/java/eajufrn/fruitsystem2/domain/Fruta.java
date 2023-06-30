@@ -24,13 +24,15 @@ public class Fruta extends AbstractEntity{
     private Double preco;
 
     @Data
-    public static class DtoRequest{
+    public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:
         @NotBlank(message = "Fruta com nome em branco")
         String nome;
         @Max(value = 255, message = "A descrição não pode ter mais de 255 caracteres")
         String descricao;
         @Min(value = 0, message = "O valor da fruta deve ser maior que 0")
         Double preco;
+        @NotBlank(message = "Selecione uma categoria")
+        String categoria;
 
         public static Fruta convertToEntity(DtoRequest dto, ModelMapper mapper){
             return mapper.map(dto, Fruta.class);
@@ -40,10 +42,11 @@ public class Fruta extends AbstractEntity{
     @Data
     public static class DtoResponse extends RepresentationModel<DtoResponse> {
         String nome;
-        Double preco;
-
-        public static DtoResponse convertToDto(Fruta p, ModelMapper mapper){
-            return mapper.map(p, DtoResponse.class);
+        //Double preco;
+        String descricao;
+        //String categoria;
+        public static DtoResponse convertToDto(Fruta f, ModelMapper mapper){
+            return mapper.map(f, DtoResponse.class); //retorna apenas os atributos do response
         }
 
 
