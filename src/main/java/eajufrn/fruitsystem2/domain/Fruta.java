@@ -27,7 +27,7 @@ public class Fruta extends AbstractEntity{
     public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:
         @NotBlank(message = "Fruta com nome em branco")
         String nome;
-        @Max(value = 255, message = "A descrição não pode ter mais de 255 caracteres")
+        //@Max(value = 255, message = "A descrição não pode ter mais de 255 caracteres")
         String descricao;
         @Min(value = 0, message = "O valor da fruta deve ser maior que 0")
         Double preco;

@@ -27,7 +27,7 @@ public class FrutaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Fruta.DtoResponse cadastrar(@RequestBody Fruta.DtoRequest f){
+    public Fruta.DtoResponse cadastrar(@Valid @RequestBody Fruta.DtoRequest f){
 
         Fruta fruta = this.frutaService.create(Fruta.DtoRequest.convertToEntity(f, mapper));
         Fruta.DtoResponse response = Fruta.DtoResponse.convertToDto(fruta, mapper);
@@ -38,8 +38,9 @@ public class FrutaController {
 
     @GetMapping
     public List<Fruta.DtoResponse> listar() {
+        //service que lista a entidade(fruta no caso)
         List<Fruta> frutas = this.frutaService.list();
-
+        //
         List<Fruta.DtoResponse> frutasDto = frutas.stream()
                 .map(fruta -> Fruta.DtoResponse.convertToDto(fruta, mapper))
                 .collect(Collectors.toList());

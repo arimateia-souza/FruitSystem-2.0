@@ -1,7 +1,6 @@
 package eajufrn.fruitsystem2.service;
 
 import eajufrn.fruitsystem2.domain.AbstractEntity;
-import org.springframework.stereotype.Service;
 import java.util.List;
 
 
