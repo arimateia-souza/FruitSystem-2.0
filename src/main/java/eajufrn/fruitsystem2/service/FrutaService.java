@@ -12,7 +12,5 @@ public class FrutaService extends GenericService<Fruta, FrutaRepository> {
     }
 
 
-    public List<Fruta> listarFrutas(){
-        return repository.findAll();
-    }
+
 }

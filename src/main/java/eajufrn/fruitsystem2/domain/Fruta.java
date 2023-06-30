@@ -29,7 +29,7 @@ public class Fruta extends AbstractEntity{
         String nome;
         @Max(value = 255, message = "A descrição não pode ter mais de 255 caracteres")
         String descricao;
-        @Min(value = 1, message = "O valor da fruta deve ser maior que 0")
+        @Min(value = 0, message = "O valor da fruta deve ser maior que 0")
         Double preco;
 
         public static Fruta convertToEntity(DtoRequest dto, ModelMapper mapper){
