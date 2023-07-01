@@ -48,11 +48,23 @@ public class FrutaController {
 
         return response;
     }
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/{id}")
+    public Fruta.DtoResponse atualizar(@Valid @RequestBody Fruta.DtoRequest fruta, @PathVariable Long id) {
+        Fruta f = Fruta.DtoRequest.convertToEntity(fruta, mapper);
+        f.setId(id); //recebe o mesmo id
+        Fruta updatedFruta = this.frutaService.update(f, id);
+        Fruta.DtoResponse response = Fruta.DtoResponse.convertToDto(updatedFruta, mapper);
 
-   /* @PutMapping("/{id}")
-    public Fruta atualizar(@PathVariable Long id, @RequestBody Fruta fruta) {
-        return ;
-    }*/
+        return response;
+    }
+
+    @DeleteMapping("/{id}")
+    public void apagar(@PathVariable Long id){
+        this.frutaService.delete(id);
+        //System.out.println("Apagou");
+    }
+
 
 
 
