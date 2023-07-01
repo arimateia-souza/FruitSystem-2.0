@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/fruta")
 public class FrutaController {
     private FrutaService frutaService;
@@ -58,14 +59,11 @@ public class FrutaController {
 
         return response;
     }
-
     @DeleteMapping("/{id}")
     public void apagar(@PathVariable Long id){
         this.frutaService.delete(id);
         //System.out.println("Apagou");
     }
-
-
 
 
 
