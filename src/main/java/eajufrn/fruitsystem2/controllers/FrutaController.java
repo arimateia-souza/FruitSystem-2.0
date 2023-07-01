@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "localhost:3000")
 @RequestMapping("/fruta")
 public class FrutaController {
     private FrutaService frutaService;
