@@ -1,9 +1,7 @@
 package eajufrn.fruitsystem2.domain;
 
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,9 +25,10 @@ public class Fruta extends AbstractEntity{
     public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:
         @NotBlank(message = "Fruta com nome em branco")
         String nome;
-        //@Max(value = 255, message = "A descrição não pode ter mais de 255 caracteres")
+        @NotBlank
+        @Size(max = 255, min = 8)
         String descricao;
-        @Min(value = 0, message = "O valor da fruta deve ser maior que 0")
+        @NotNull(message = "Preço não pode ser vazio")
         Double preco;
         @NotBlank(message = "Selecione uma categoria")
         String categoria;

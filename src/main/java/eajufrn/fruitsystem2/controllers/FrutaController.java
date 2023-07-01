@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -41,12 +42,18 @@ public class FrutaController {
         //service que lista a entidade(fruta no caso)
         List<Fruta> frutas = this.frutaService.list();
         //
-        List<Fruta.DtoResponse> frutasDto = frutas.stream()
+        List<Fruta.DtoResponse> response = frutas.stream()
                 .map(fruta -> Fruta.DtoResponse.convertToDto(fruta, mapper))
                 .collect(Collectors.toList());
 
-        return frutasDto;
+        return response;
     }
+
+   /* @PutMapping("/{id}")
+    public Fruta atualizar(@PathVariable Long id, @RequestBody Fruta fruta) {
+        return ;
+    }*/
+
 
 
 
