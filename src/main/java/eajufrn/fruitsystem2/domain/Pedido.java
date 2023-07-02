@@ -21,7 +21,15 @@ public class Pedido {
     private LocalDateTime dataPedido;
     private Double valorTotal;
 
+    // Relacionamento 1 para 1 (pedido e pedidoItem)
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<PedidoItem> itens;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "pedido_produto",
+            joinColumns = @JoinColumn(name = "pedido_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id"))
+    private List<Produto> produtos;
 }
+
 
