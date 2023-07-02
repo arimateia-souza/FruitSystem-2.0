@@ -1,6 +1,6 @@
 function Formulario() {
     return (
-        <div className="container mt-5">
+        <div className="container px-4 px-lg-5 mt-5">
             <form>
                 <h1>Cadastrar fruta</h1>
                 <div className="mb-3">
