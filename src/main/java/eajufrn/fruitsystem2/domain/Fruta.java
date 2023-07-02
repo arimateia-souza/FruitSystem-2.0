@@ -21,7 +21,7 @@ public class Fruta extends AbstractEntity{
     private String nome;
     private String descricao;
 
-    //private Categoria categoria;
+    private String categoria;
     private Double preco;
 
     @Data
@@ -47,7 +47,7 @@ public class Fruta extends AbstractEntity{
         String nome;
         //Double preco;
         String descricao;
-        //String categoria;
+        String categoria;
         public static DtoResponse convertToDto(Fruta f, ModelMapper mapper){
             return mapper.map(f, DtoResponse.class); //retorna apenas os atributos do response
         }
