@@ -32,6 +32,7 @@ public class Fruta extends AbstractEntity{
         Double preco;
         @NotBlank(message = "Selecione uma categoria")
         String categoria;
+        //String imagemUri;
 
         public static Fruta convertToEntity(DtoRequest dto, ModelMapper mapper){
             return mapper.map(dto, Fruta.class);

@@ -1,5 +1,7 @@
 function Tabela(){
     return(
+       <div className="container px-4 px-lg-5 mt-5">
+           <h1>Listar frutas do banco</h1>
         <table>
             <thead>
             <tr>
@@ -26,6 +28,7 @@ function Tabela(){
             </tbody>
 
         </table>
+       </div>
     )
 }
 
