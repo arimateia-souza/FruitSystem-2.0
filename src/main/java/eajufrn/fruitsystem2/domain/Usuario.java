@@ -1,9 +1,7 @@
 package eajufrn.fruitsystem2.domain;
 
-
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,14 +18,11 @@ import org.hibernate.annotations.Where;
 @Where(clause = "deleted_at is null")
 public class Usuario extends AbstractEntity {
 
-
     private String nome;
     private String login;
     private String senha;
     private boolean isAdmin = false;
 
-    //private Endereco endereco;
-
-
-
+    @OneToOne(mappedBy = "usuario")
+    private Endereco endereco;
 }
