@@ -5,7 +5,7 @@ import Tabela from "./components/Tabela";
 import {useEffect, useState} from "react";
 
 function App() {
-    const [produtos, setProdutos] = useState([]);
+    /*const [produtos, setProdutos] = useState([]);
 
     useEffect(()=>{
         fetch("http://localhost:8080/fruta")
@@ -13,13 +13,13 @@ function App() {
             .then(retorno_convertido => setProdutos(retorno_convertido))
 
     }, []);
-
+*/
+    //<p>{JSON.stringify(produtos)}</p>
   return (
     <div>
-        <p>{JSON.stringify(produtos)}</p>
-      <Formulario/>
-        <Tabela/>
 
+        <Formulario/>
+        <Tabela/>
     </div>
   );
 }

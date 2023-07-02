@@ -1,6 +1,8 @@
 package eajufrn.fruitsystem2.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +20,8 @@ public class Fruta extends AbstractEntity{
 
     private String nome;
     private String descricao;
-    private String categoria;
+
+    //private Categoria categoria;
     private Double preco;
 
     @Data

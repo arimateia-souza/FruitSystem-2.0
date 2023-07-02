@@ -22,10 +22,8 @@ public class Usuario extends AbstractEntity {
 
 
     private String nome;
-    private String cpf;
     private String login;
     private String senha;
-    private String email;
     private boolean isAdmin = false;
 
     //private Endereco endereco;
