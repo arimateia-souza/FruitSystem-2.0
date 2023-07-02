@@ -1,21 +1,27 @@
 package eajufrn.fruitsystem2.domain;
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Pedido {
-    @ManyToOne
-    @JoinColumn(name = "usuario_ID")
-    private Usuario usuario;
-    private List<PedidoItem> items;
-    private Double total;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String descricao;
+    private LocalDateTime dataPedido;
+    private Double valorTotal;
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<PedidoItem> itens;
 }
+

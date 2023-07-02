@@ -1,8 +1,7 @@
 package eajufrn.fruitsystem2.domain;
 
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +10,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class PedidoItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
-    @JoinColumn(name = "fruta_ID")
+    private Pedido pedido;
+
+    @ManyToOne
     private Fruta fruta;
-    private Integer qualidade;
+    private Integer quantidade;
 }
