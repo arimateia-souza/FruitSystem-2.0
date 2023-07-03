@@ -45,7 +45,7 @@ public class Fruta extends AbstractEntity{
     @Data
     public static class DtoResponse extends RepresentationModel<DtoResponse> {
         String nome;
-        //Double preco;
+        Double preco;
         String descricao;
         String categoria;
         public static DtoResponse convertToDto(Fruta f, ModelMapper mapper){
