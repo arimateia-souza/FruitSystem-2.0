@@ -3,6 +3,7 @@ package eajufrn.fruitsystem2.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,7 @@ import org.springframework.hateoas.RepresentationModel;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "Frutas")
 public class Fruta extends AbstractEntity{
 
     private String nome;
