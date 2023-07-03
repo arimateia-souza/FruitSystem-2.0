@@ -1,5 +1,6 @@
 package eajufrn.fruitsystem2.domain;
 
+import eajufrn.fruitsystem2.controllers.FrutaController;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,6 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.RepresentationModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -53,9 +55,12 @@ public class Fruta extends AbstractEntity{
         public static DtoResponse convertToDto(Fruta f, ModelMapper mapper){
             return mapper.map(f, DtoResponse.class); //retorna apenas os atributos do response
         }
-
+        public void generateLinks(Long id){
+            add(linkTo(FrutaController.class).slash(id).withSelfRel());
+            add(linkTo(FrutaController.class).withRel("fruta"));
+            add(linkTo(FrutaController.class).slash(id).withRel("delete"));
+        }
 
     }
-
 
 }

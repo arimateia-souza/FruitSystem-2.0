@@ -8,7 +8,6 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,6 +32,7 @@ public class FrutaController {
 
         Fruta fruta = this.frutaService.create(Fruta.DtoRequest.convertToEntity(f, mapper));
         Fruta.DtoResponse response = Fruta.DtoResponse.convertToDto(fruta, mapper);
+        response.generateLinks(fruta.getId());
 
         return response;
     }
