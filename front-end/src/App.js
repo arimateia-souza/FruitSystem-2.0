@@ -19,7 +19,7 @@ function App() {
     <div>
 
         <Formulario/>
-        <Tabela vetor={produtos}/>
+        <Tabela frutas={produtos}/>
     </div>
   );
 }
