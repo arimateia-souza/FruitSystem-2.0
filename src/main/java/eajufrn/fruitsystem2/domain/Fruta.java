@@ -28,6 +28,7 @@ public class Fruta extends AbstractEntity{
     private String categoria;
     private Double preco;
 
+    //  ---- DTO Request ----
     @Data
     public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:
         @NotBlank(message = "Fruta com nome em branco")
@@ -46,6 +47,7 @@ public class Fruta extends AbstractEntity{
         }
 
     }
+    // ---- DTO Response ----
     @Data
     public static class DtoResponse extends RepresentationModel<DtoResponse> {
         String nome;
@@ -54,7 +56,10 @@ public class Fruta extends AbstractEntity{
         String categoria;
         public static DtoResponse convertToDto(Fruta f, ModelMapper mapper){
             return mapper.map(f, DtoResponse.class); //retorna apenas os atributos do response
+
+
         }
+        //---- HATEOAS -------
         public void generateLinks(Long id){
             add(linkTo(FrutaController.class).slash(id).withSelfRel());
             add(linkTo(FrutaController.class).withRel("fruta"));
