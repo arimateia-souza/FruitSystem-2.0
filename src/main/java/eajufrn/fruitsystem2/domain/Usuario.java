@@ -55,7 +55,7 @@ public class Usuario extends AbstractEntity {
         }
 
     }
-        //  ---- DTO Request ----
+        //  ---- DTO Response ----
     @Data
     public static class DtoResponse extends RepresentationModel<DtoResponse> {
         private String nome;
