@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Frutas")
+@Table(name = "Pedidos")
 public class Pedido extends AbstractEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
