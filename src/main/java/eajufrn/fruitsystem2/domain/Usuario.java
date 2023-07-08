@@ -1,6 +1,5 @@
 package eajufrn.fruitsystem2.domain;
 
-import eajufrn.fruitsystem2.controllers.FrutaController;
 import eajufrn.fruitsystem2.controllers.UsuarioController;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;

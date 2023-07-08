@@ -1,18 +1,17 @@
 package eajufrn.fruitsystem2.domain;
 
-import eajufrn.fruitsystem2.controllers.FrutaController;
-import eajufrn.fruitsystem2.controllers.UsuarioController;
+
+import eajufrn.fruitsystem2.controllers.EnderecoController;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.RepresentationModel;
+
+import java.util.Objects;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
@@ -23,9 +22,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @Entity
 @Table(name = "Enderecos")
 public class Endereco extends AbstractEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     private String cidade;
     private String rua;
 
@@ -50,7 +47,7 @@ public class Endereco extends AbstractEntity {
     @Data
     public static class DtoResponse extends RepresentationModel<Endereco.DtoResponse> {
         String cidade;
-        Double nome;
+        String rua;
 
         public static Endereco.DtoResponse convertToDto(Endereco endereco, ModelMapper mapper){
             return mapper.map(endereco, Endereco.DtoResponse.class); //retorna apenas os atributos do response
@@ -59,11 +56,11 @@ public class Endereco extends AbstractEntity {
         }
 
         //---- HATEOAS -------
-        /*public void generateLinks(Long id){
-            add(linkTo(FrutaController.class).slash(id).withSelfRel());
-            add(linkTo(FrutaController.class).withRel("endereco"));
-            add(linkTo(FrutaController.class).slash(id).withRel("delete"));
-        }*/
+        public void generateLinks(Long id){
+            add(linkTo(EnderecoController.class).slash(id).withSelfRel());
+            add(linkTo(EnderecoController.class).withRel("endereco"));
+            add(linkTo(EnderecoController.class).slash(id).withRel("delete"));
+        }
 
     }
 

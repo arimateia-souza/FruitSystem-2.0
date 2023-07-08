@@ -7,7 +7,6 @@ import eajufrn.fruitsystem2.repository.EnderecoRepository;
 
 @Service
 public class EnderecoService extends GenericService<Endereco, EnderecoRepository> {
-
     public EnderecoService(EnderecoRepository repository) {
         super(repository);
     }

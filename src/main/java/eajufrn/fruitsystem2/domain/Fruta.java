@@ -24,19 +24,18 @@ public class Fruta extends AbstractEntity{
 
     private String nome;
     private String descricao;
-
     private String categoria;
     private Double preco;
 
     //  ---- DTO Request ----
     @Data
     public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:
-        @NotBlank(message = "Fruta com nome em branco")
+        @NotBlank(message = "'Fruta' com nome em branco")
         String nome;
         @NotBlank
         @Size(max = 255, min = 8)
         String descricao;
-        @NotNull(message = "Preço não pode ser vazio")
+        @NotNull(message = "'Preço' não pode ser vazio")
         Double preco;
         @NotBlank(message = "Selecione uma categoria")
         String categoria;
