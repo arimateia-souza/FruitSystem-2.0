@@ -33,7 +33,7 @@ public class Endereco extends AbstractEntity {
     private Usuario usuario;
 
     @Data
-    public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:
+    public static class DtoRequest{
         @NotEmpty(message = "O campo 'Cidade' não pode ser vazio")
         String cidade;
         @NotEmpty(message = "O campo 'Rua' não pode ser vazio")
@@ -52,12 +52,18 @@ public class Endereco extends AbstractEntity {
         String cidade;
         Double nome;
 
-        public static Endereco.DtoResponse convertToDto(Endereco f, ModelMapper mapper){
-            return mapper.map(f, Endereco.DtoResponse.class); //retorna apenas os atributos do response
+        public static Endereco.DtoResponse convertToDto(Endereco endereco, ModelMapper mapper){
+            return mapper.map(endereco, Endereco.DtoResponse.class); //retorna apenas os atributos do response
 
 
         }
 
+        //---- HATEOAS -------
+        /*public void generateLinks(Long id){
+            add(linkTo(FrutaController.class).slash(id).withSelfRel());
+            add(linkTo(FrutaController.class).withRel("endereco"));
+            add(linkTo(FrutaController.class).slash(id).withRel("delete"));
+        }*/
 
     }
 
