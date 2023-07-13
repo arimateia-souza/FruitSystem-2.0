@@ -38,7 +38,7 @@ public class Usuario extends AbstractEntity {
     private Endereco endereco;
 
 
-    //  ---- DTO Request ----
+    // ---------------------------------------- DTO Request ------------------------------------------------------------
     @Data
     public static class DtoRequest{
         @NotBlank
@@ -54,7 +54,8 @@ public class Usuario extends AbstractEntity {
         }
 
     }
-        //  ---- DTO Response ----
+
+    // ---------------------------------------- DTO Response -----------------------------------------------------------
     @Data
     public static class DtoResponse extends RepresentationModel<DtoResponse> {
         private String nome;
@@ -65,7 +66,7 @@ public class Usuario extends AbstractEntity {
             return mapper.map(u, DtoResponse.class);
         }
 
-            //---- HATEOAS -------
+        // ----------------------------------------------- HATEOAS -----------------------------------------------------
             public void generateLinks(Long id){
                 add(linkTo(UsuarioController.class).slash(id).withSelfRel());
                 add(linkTo(UsuarioController.class).withRel("usuario"));

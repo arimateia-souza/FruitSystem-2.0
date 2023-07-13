@@ -6,11 +6,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import eajufrn.fruitsystem2.domain.Usuario.*;
-
 import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/usuario")
 public class UsuarioController {
 
@@ -59,6 +59,6 @@ public class UsuarioController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
-    // TESTE UPDATE GIT FORK
+
 }
 

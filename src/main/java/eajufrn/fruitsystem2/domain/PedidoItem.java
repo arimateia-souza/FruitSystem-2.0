@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "PedidoItem")
+//@Table(name = "PedidoItem")
 public class PedidoItem extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

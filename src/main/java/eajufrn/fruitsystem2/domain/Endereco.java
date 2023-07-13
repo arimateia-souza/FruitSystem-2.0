@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.util.Objects;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
@@ -25,10 +24,11 @@ public class Endereco extends AbstractEntity {
 
     private String cidade;
     private String rua;
-
     @OneToOne
     private Usuario usuario;
 
+
+    // ---------------------------------------- DTO Request ------------------------------------------------------------
     @Data
     public static class DtoRequest{
         @NotEmpty(message = "O campo 'Cidade' não pode ser vazio")
@@ -44,6 +44,7 @@ public class Endereco extends AbstractEntity {
     }
 
 
+    // ---------------------------------------- DTO Response -----------------------------------------------------------
     @Data
     public static class DtoResponse extends RepresentationModel<Endereco.DtoResponse> {
         String cidade;
@@ -55,7 +56,7 @@ public class Endereco extends AbstractEntity {
 
         }
 
-        //---- HATEOAS -------
+        // ------------------------------------------- HATEOAS ---------------------------------------------------------
         public void generateLinks(Long id){
             add(linkTo(EnderecoController.class).slash(id).withSelfRel());
             add(linkTo(EnderecoController.class).withRel("endereco"));
