@@ -25,9 +25,9 @@ public class PedidoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Pedido.DtoResponse cadastrar(@Valid @RequestBody Pedido.DtoRequest f){
+    public Pedido.DtoResponse cadastrar(@Valid @RequestBody Pedido.DtoRequest p){
 
-        Pedido pedido = this.pedidoService.create(Pedido.DtoRequest.convertToEntity(f, mapper));
+        Pedido pedido = this.pedidoService.create(Pedido.DtoRequest.convertToEntity(p, mapper));
         Pedido.DtoResponse response = Pedido.DtoResponse.convertToDto(pedido, mapper);
         response.generateLinks(pedido.getId());
 
@@ -48,9 +48,9 @@ public class PedidoController {
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
     public Pedido.DtoResponse atualizar(@Valid @RequestBody Pedido.DtoRequest pedido, @PathVariable Long id) {
-        Pedido f = Pedido.DtoRequest.convertToEntity(pedido, mapper);
-        f.setId(id);
-        Pedido updatePedido = this.pedidoService.update(f, id);
+        Pedido p = Pedido.DtoRequest.convertToEntity(pedido, mapper);
+        p.setId(id);
+        Pedido updatePedido = this.pedidoService.update(p, id);
         Pedido.DtoResponse response = Pedido.DtoResponse.convertToDto(updatePedido, mapper);
 
         return response;

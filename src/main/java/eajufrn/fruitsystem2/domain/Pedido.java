@@ -22,7 +22,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Pedidos")
+//@Table(name = "Pedidos")
 public class Pedido extends AbstractEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

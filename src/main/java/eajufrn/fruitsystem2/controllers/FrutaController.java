@@ -1,7 +1,5 @@
 package eajufrn.fruitsystem2.controllers;
 
-
-
 import eajufrn.fruitsystem2.domain.Fruta;
 import eajufrn.fruitsystem2.service.FrutaService;
 import jakarta.validation.Valid;
@@ -63,8 +61,5 @@ public class FrutaController {
         this.frutaService.delete(id);
         //System.out.println("Apagou");
     }
-
-
-
 
 }

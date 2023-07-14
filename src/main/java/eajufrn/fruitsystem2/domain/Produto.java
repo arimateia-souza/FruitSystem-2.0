@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Produtos")
+//@Table(name = "Produtos")
 public class Produto extends AbstractEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
