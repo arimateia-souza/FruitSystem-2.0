@@ -37,11 +37,6 @@ public class Pedido extends AbstractEntity{
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<PedidoItem> itens;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "pedido_produto",
-            joinColumns = @JoinColumn(name = "pedido_id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id"))
-    private List<Produto> produtos;
 
     // ---------------------------------------- DTO Request ------------------------------------------------------------
 
@@ -56,8 +51,6 @@ public class Pedido extends AbstractEntity{
         Double valorTotal;
 //        @NotBlank
         List<PedidoItem> itens;
-//        @NotNull
-        List<Produto> produtos;
 
         public static Pedido convertToEntity(Pedido.DtoRequest dto, ModelMapper mapper){
             return mapper.map(dto, Pedido.class);
@@ -73,7 +66,7 @@ public class Pedido extends AbstractEntity{
         LocalDate dataPedido;
         Double valorTotal;
         List<PedidoItem> itens;
-        List<Produto> produtos;
+
 
         public static Pedido.DtoResponse convertToDto(Pedido pedido, ModelMapper mapper){
             return mapper.map(pedido, Pedido.DtoResponse.class);
