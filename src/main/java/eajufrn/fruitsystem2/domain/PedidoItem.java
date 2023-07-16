@@ -9,6 +9,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.RepresentationModel;
+
+import java.util.List;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 
@@ -22,11 +25,17 @@ public class PedidoItem extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne // "pedido" indica que cada "PedidoItem" pertence a um único "Pedido"
     private Pedido pedido;
 
-    @ManyToOne
-    private Fruta fruta;
+    // Relacionamento N para N entre fruta e pedidoItem
+    @ManyToMany
+    @JoinTable(
+            name = "pedidoItemFruta", // Nome da tabela de junção
+            joinColumns = @JoinColumn(name = "pedidoItemId"), // Coluna de junção referente a PedidoItem
+            inverseJoinColumns = @JoinColumn(name = "frutaId") // Coluna de junção referente a Fruta
+    )
+    private List<Fruta> fruta; //  a propriedade "fruta" indica que cada "PedidoItem" está associado a muitas Frutas
     private Integer quantidade;
 
 

@@ -19,11 +19,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "Enderecos")
+//@Table(name = "Enderecos")
 public class Endereco extends AbstractEntity {
 
     private String cidade;
     private String rua;
+
+    // Relacionamento 1 para 1 entre endereço e usuário
     @OneToOne
     private Usuario usuario;
 

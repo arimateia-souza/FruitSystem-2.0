@@ -33,9 +33,9 @@ public class Pedido extends AbstractEntity{
     private LocalDateTime dataPedido;
     private Double valorTotal;
 
-    // Relacionamento 1 para 1 (pedido e pedidoItem)
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<PedidoItem> itens;
+    // Relacionamento 1 para N (pedido e pedidoItem)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL) // o mapeamento do relacionamento é feito pela propriedade "pedido" na classe "PedidoItem"
+    private List<PedidoItem> pedidoItem;
 
 
     // ---------------------------------------- DTO Request ------------------------------------------------------------
@@ -45,7 +45,7 @@ public class Pedido extends AbstractEntity{
         @NotBlank(message = " Descrição não estar vazia ou em branco")
         String descricao;
         @NotNull(message = "A data não pode ser nula")
-        @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+        @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy") // Anotação em jackson para especificar a anotação da data pq o localdate nao funcionou
         LocalDate dataPedido;
         @NotNull
         Double valorTotal;
@@ -66,7 +66,6 @@ public class Pedido extends AbstractEntity{
         LocalDate dataPedido;
         Double valorTotal;
         List<PedidoItem> itens;
-
 
         public static Pedido.DtoResponse convertToDto(Pedido pedido, ModelMapper mapper){
             return mapper.map(pedido, Pedido.DtoResponse.class);

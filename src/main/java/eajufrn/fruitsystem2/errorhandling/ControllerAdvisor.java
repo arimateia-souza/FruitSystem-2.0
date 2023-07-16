@@ -27,6 +27,7 @@ public class ControllerAdvisor  {
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
+    //--- Uma nova exceção será lançada quando o usuário desrespeitar alguma validação aplicada no objeto de requisição aguardado ---
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public ResponseEntity<Object> handleEntityNotFoundException(
             MethodArgumentNotValidException ex, WebRequest request) {

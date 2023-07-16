@@ -34,7 +34,9 @@ public class Usuario extends AbstractEntity {
     @NotNull
     private String senha;
     private boolean isAdmin = false;
-    @OneToOne(mappedBy = "usuario")
+
+    // Relacionamento 1 para 1 entre usuário e endereço
+    @OneToOne(mappedBy = "usuario") // na classe Endereço temos a propriedade chamada usuário, o mapeamento é feito aqui
     private Endereco endereco;
 
 

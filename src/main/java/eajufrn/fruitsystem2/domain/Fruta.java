@@ -27,6 +27,7 @@ public class Fruta extends AbstractEntity{
     private String categoria;
     private Double preco;
 
+
     // ---------------------------------------- DTO Request ------------------------------------------------------------
     @Data
     public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:

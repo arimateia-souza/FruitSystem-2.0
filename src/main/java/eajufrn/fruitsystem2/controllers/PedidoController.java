@@ -26,7 +26,7 @@ public class PedidoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Pedido.DtoResponse cadastrar(@Valid @RequestBody Pedido.DtoRequest p){
-        p.getItens().get(0).getFruta().getNome();//////////
+       // p.getItens().get(0).getFruta().getNome();////////// TESTAAAAAR
         Pedido pedido = this.pedidoService.create(Pedido.DtoRequest.convertToEntity(p, mapper));
         Pedido.DtoResponse response = Pedido.DtoResponse.convertToDto(pedido, mapper);
         response.generateLinks(pedido.getId());
