@@ -23,7 +23,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Usuarios")
+//@Table(name = "Usuarios")
 @SQLDelete(sql = "UPDATE usuario SET deleted_at = CURRENT_TIMESTAMP WHERE id=?")
 @Where(clause = "deleted_at is null")
 public class Usuario extends AbstractEntity {

@@ -50,7 +50,7 @@ public class UsuarioController {
         return response;
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Usuario update(@RequestBody Usuario u, @PathVariable Long id) {
         return service.update(u, id);
     }
