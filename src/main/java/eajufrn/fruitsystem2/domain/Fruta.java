@@ -32,15 +32,17 @@ public class Fruta extends AbstractEntity{
     @Data
     public static class DtoRequest{//aceita apenas nome, descrição, preço e categoria por exemplo:
         @NotBlank(message = "'Fruta' com nome em branco")
-        String nome;
+        private String nome;
         @NotBlank
         @Size(max = 255, min = 8)
-        String descricao;
-        @NotNull(message = "'Preço' não pode ser vazio")
-        Double preco;
+        private String descricao;
+
         @NotBlank(message = "Selecione uma categoria")
-        String categoria;
+        private String categoria;
         //String imagemUri;
+
+        //@NotNull(message = "'Preço' não pode ser nulo") - notnull nao funciona pra double, precisa criar um validador personaliado
+        private Double preco;
 
         public static Fruta convertToEntity(DtoRequest dto, ModelMapper mapper){
             return mapper.map(dto, Fruta.class);
@@ -51,9 +53,10 @@ public class Fruta extends AbstractEntity{
     @Data
     public static class DtoResponse extends RepresentationModel<DtoResponse> {
         String nome;
-        Double preco;
         String descricao;
         String categoria;
+        Double preco;
+
         public static DtoResponse convertToDto(Fruta f, ModelMapper mapper){
             return mapper.map(f, DtoResponse.class); //retorna apenas os atributos do response
 
@@ -62,8 +65,11 @@ public class Fruta extends AbstractEntity{
         // -------------------------------------------- HATEOAS --------------------------------------------------------
         public void generateLinks(Long id){
             add(linkTo(FrutaController.class).slash(id).withSelfRel());
-            add(linkTo(FrutaController.class).withRel("fruta"));
-            add(linkTo(FrutaController.class).slash(id).withRel("delete"));
+            add(linkTo(FrutaController.class).withRel("Fruta"));
+            add(linkTo(FrutaController.class).withRel("Cadastrar"));
+            add(linkTo(FrutaController.class).slash(id).withRel("Atualizar")); // o método slash add o id e o withRel add uma relação ao link
+            add(linkTo(FrutaController.class).withRel("Listar"));
+            add(linkTo(FrutaController.class).slash(id).withRel("Deletar"));
         }
 
     }

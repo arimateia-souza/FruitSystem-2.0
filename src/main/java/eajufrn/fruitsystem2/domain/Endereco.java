@@ -61,8 +61,11 @@ public class Endereco extends AbstractEntity {
         // ------------------------------------------- HATEOAS ---------------------------------------------------------
         public void generateLinks(Long id){
             add(linkTo(EnderecoController.class).slash(id).withSelfRel());
-            add(linkTo(EnderecoController.class).withRel("endereco"));
-            add(linkTo(EnderecoController.class).slash(id).withRel("delete"));
+            add(linkTo(EnderecoController.class).withRel("Endereço"));
+            add(linkTo(EnderecoController.class).withRel("Cadastrar"));
+            add(linkTo(EnderecoController.class).slash(id).withRel("Atualizar"));
+            add(linkTo(EnderecoController.class).withRel("Listar"));
+            add(linkTo(EnderecoController.class).slash(id).withRel("Deletar"));
         }
 
     }

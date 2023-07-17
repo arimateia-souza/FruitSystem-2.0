@@ -1,6 +1,7 @@
 package eajufrn.fruitsystem2.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat; // para anotação da data
+import eajufrn.fruitsystem2.controllers.FrutaController;
 import eajufrn.fruitsystem2.controllers.PedidoController;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -47,8 +48,7 @@ public class Pedido extends AbstractEntity{
         @NotNull(message = "A data não pode ser nula")
         @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy") // Anotação em jackson para especificar a anotação da data pq o localdate nao funcionou
         LocalDate dataPedido;
-        @NotNull
-        Double valorTotal;
+
 //        @NotBlank
         List<PedidoItem> itens;
 
@@ -64,7 +64,6 @@ public class Pedido extends AbstractEntity{
 
         String descricao;
         LocalDate dataPedido;
-        Double valorTotal;
         List<PedidoItem> itens;
 
         public static Pedido.DtoResponse convertToDto(Pedido pedido, ModelMapper mapper){
@@ -75,8 +74,11 @@ public class Pedido extends AbstractEntity{
         // -------------------------------------------- HATEOAS --------------------------------------------------------
         public void generateLinks(Long id){
             add(linkTo(PedidoController.class).slash(id).withSelfRel());
-            add(linkTo(PedidoController.class).withRel("pedido"));
-            add(linkTo(PedidoController.class).slash(id).withRel("delete"));
+            add(linkTo(PedidoController.class).withRel("Pedido"));
+            add(linkTo(PedidoController.class).withRel("Cadastrar"));
+            add(linkTo(PedidoController.class).slash(id).withRel("Atualizar"));
+            add(linkTo(PedidoController.class).withRel("Listar"));
+            add(linkTo(PedidoController.class).slash(id).withRel("Deletar"));
         }
 
     }

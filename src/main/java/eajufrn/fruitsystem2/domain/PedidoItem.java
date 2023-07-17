@@ -1,5 +1,6 @@
 package eajufrn.fruitsystem2.domain;
 
+import eajufrn.fruitsystem2.controllers.PedidoController;
 import eajufrn.fruitsystem2.controllers.PedidoItemController;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -47,7 +48,7 @@ public class PedidoItem extends AbstractEntity {
         @NotBlank
         Pedido.DtoRequest pedido;
         @NotNull
-        Fruta.DtoRequest fruta;
+        List<Fruta.DtoRequest> fruta;
         @NotBlank
         Integer quantidade;
 
@@ -60,10 +61,10 @@ public class PedidoItem extends AbstractEntity {
         // ---------------------------------------- DTO Response -----------------------------------------------------------
         @Data
         public static class DtoResponse extends RepresentationModel<DtoResponse> {
-            String nome;
-            Double preco;
-            String descricao;
-            String categoria;
+            Long id;
+            Pedido pedido;
+            List<Fruta> fruta;
+            Integer quantidade;
 
             public static DtoResponse convertToDto(PedidoItem pi, ModelMapper mapper) {
                 return mapper.map(pi, DtoResponse.class);
@@ -73,8 +74,11 @@ public class PedidoItem extends AbstractEntity {
             // -------------------------------------------- HATEOAS --------------------------------------------------------
             public void generateLinks(Long id) {
                 add(linkTo(PedidoItemController.class).slash(id).withSelfRel());
-                add(linkTo(PedidoItemController.class).withRel("pedido"));
-                add(linkTo(PedidoItemController.class).slash(id).withRel("delete"));
+                add(linkTo(PedidoItemController.class).withRel("PedidoItem"));
+                add(linkTo(PedidoItemController.class).withRel("Cadastrar"));
+                add(linkTo(PedidoItemController.class).slash(id).withRel("Atualizar"));
+                add(linkTo(PedidoItemController.class).withRel("Listar"));
+                add(linkTo(PedidoItemController.class).slash(id).withRel("Deletar"));
             }
 
         }

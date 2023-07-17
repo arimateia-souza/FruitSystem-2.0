@@ -1,5 +1,6 @@
 package eajufrn.fruitsystem2.domain;
 
+import eajufrn.fruitsystem2.controllers.PedidoController;
 import eajufrn.fruitsystem2.controllers.UsuarioController;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
@@ -62,7 +63,7 @@ public class Usuario extends AbstractEntity {
     public static class DtoResponse extends RepresentationModel<DtoResponse> {
         private String nome;
         private String login;
-        private boolean isAdmin;
+        private String senha;
 
         public static DtoResponse convertToDto(Usuario u, ModelMapper mapper) {
             return mapper.map(u, DtoResponse.class);
@@ -71,8 +72,11 @@ public class Usuario extends AbstractEntity {
         // ----------------------------------------------- HATEOAS -----------------------------------------------------
             public void generateLinks(Long id){
                 add(linkTo(UsuarioController.class).slash(id).withSelfRel());
-                add(linkTo(UsuarioController.class).withRel("usuario"));
-                add(linkTo(UsuarioController.class).slash(id).withRel("delete"));
+                add(linkTo(UsuarioController.class).withRel("Usuário"));
+                add(linkTo(UsuarioController.class).withRel("Cadastrar"));
+                add(linkTo(UsuarioController.class).slash(id).withRel("Atualizar"));
+                add(linkTo(UsuarioController.class).withRel("Listar"));
+                add(linkTo(UsuarioController.class).slash(id).withRel("Deletar"));
             }
 
 
