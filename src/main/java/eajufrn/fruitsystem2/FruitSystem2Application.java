@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
 @SpringBootApplication
 public class FruitSystem2Application {
 
@@ -15,4 +16,5 @@ public class FruitSystem2Application {
     public ModelMapper mapper(){
         return new ModelMapper();
     }
+
 }

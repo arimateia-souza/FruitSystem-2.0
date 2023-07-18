@@ -1,6 +1,6 @@
 
 
-export default function Formulario() {
+export default function Formulario(obj) {
 
     return (
         <div className="container px-4 px-lg-5 mt-5">
@@ -8,7 +8,7 @@ export default function Formulario() {
                 <h1>Cadastrar fruta</h1>
                 <div className="mb-3">
                     <label className="form-label" htmlFor="nomeFruta">Nome:</label>
-                    <input className="form-control" type="text" placeholder="Digite o nome da fruta" id="nome" />
+                    <input onChange={obj.name} className="form-control" type="text" placeholder="Digite o nome da fruta" id="nome" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">Descrição:</label>
