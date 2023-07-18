@@ -14,7 +14,7 @@ function App() {
 
     }, []);
 
-    //<p>{JSON.stringify(produtos)}</p>
+
   return (
     <div>
 
