@@ -9,23 +9,48 @@ import Footer from "./components/Footer";
 
 function App() {
 
+    const fruta = {
+        nome: '',
+        descricao: '',
+        preco: 0,
+        categoria: ''
+    }
 
-    const [produtos, setProdutos] = useState([]);
+    const [frutas, setFrutas] = useState([]);
+    const [objFruta, setObjFruta] = useState(fruta)
 
     useEffect(()=>{
         fetch("http://localhost:8080/fruta")
             .then(retorno => retorno.json())
-            .then(retorno_convertido => setProdutos(retorno_convertido))
+            .then(retorno_convertido => setFrutas(retorno_convertido))
 
     }, []);
+    const digito = (e) => {
+        setObjFruta({ ...objFruta, [e.target.name]: e.target.value });
+    };
+
+
+    const cadastrar = () => {
+        fetch("http://localhost:8080/fruta",{
+           method:'post',
+            body:JSON.stringify(objFruta),
+            headers:{
+               'Content-type':'application/jason',
+                'Accept':'application/json'
+            }
+
+        })
+
+    }
 
 
 
     return (
         <div>
             <Header/>
-            <Formulario/>
-            <Tabela frutas={produtos}/>
+            <Formulario eventoTeclado={digito} />
+
+            <Tabela frutas={frutas}/>
             <Footer/>
 
         </div>

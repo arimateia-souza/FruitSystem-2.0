@@ -8,7 +8,7 @@ export default function Formulario() {
                 <h1>Cadastrar fruta</h1>
                 <div className="mb-3">
                     <label className="form-label" htmlFor="nomeFruta">Nome:</label>
-                    <input className="form-control" type="text" placeholder="Digite o nome da fruta" id="nomeFruta" />
+                    <input className="form-control" type="text" placeholder="Digite o nome da fruta" id="nome" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">Descrição:</label>
@@ -18,7 +18,7 @@ export default function Formulario() {
                 <div className="d-flex">
                     <div className="col-6 my-2 mx-0">
                         <label htmlFor="preco">Preço:</label>
-                        <input className="form-control mr-sm-2" type="number" placeholder="Informe o valor do produto" id="preco" />
+                        <input  className="form-control mr-sm-2" type="number" placeholder="Informe o valor do produto" id="preco" />
                     </div>
 
                     <div className="col-6 my-2 mx-1">
