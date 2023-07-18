@@ -51,7 +51,7 @@ public class FrutaController {
     @PutMapping("/{id}")
     public Fruta.DtoResponse atualizar(@Valid @RequestBody Fruta.DtoRequest fruta, @PathVariable Long id) {
         Fruta f = Fruta.DtoRequest.convertToEntity(fruta, mapper);
-        f.setId(id); //recebe o mesmo id
+
         Fruta updatedFruta = this.frutaService.update(f, id);
         Fruta.DtoResponse response = Fruta.DtoResponse.convertToDto(updatedFruta, mapper);
 

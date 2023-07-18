@@ -3,8 +3,11 @@ import './App.css';
 import Formulario from "./components/Formulario";
 import Tabela from "./components/Tabela";
 import {useEffect, useState} from "react";
+import Navbar from "./components/navbar";
 
 function App() {
+
+
     const [produtos, setProdutos] = useState([]);
 
     useEffect(()=>{
@@ -15,11 +18,14 @@ function App() {
     }, []);
 
 
+
   return (
     <div>
+        <Navbar/>
 
-        <Formulario/>
         <Tabela frutas={produtos}/>
+        <Formulario/>
+
     </div>
   );
 }
