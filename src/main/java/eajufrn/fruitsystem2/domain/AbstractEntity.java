@@ -27,7 +27,6 @@ public abstract class AbstractEntity {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    private LocalDateTime deletedAt;
 
 
     @Override
@@ -35,11 +34,11 @@ public abstract class AbstractEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractEntity that = (AbstractEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(imagemUri, that.imagemUri) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt) && Objects.equals(deletedAt, that.deletedAt);
+        return Objects.equals(id, that.id) && Objects.equals(imagemUri, that.imagemUri) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, imagemUri, createdAt, updatedAt, deletedAt);
+        return Objects.hash(id, imagemUri, createdAt, updatedAt);
     }
 }
