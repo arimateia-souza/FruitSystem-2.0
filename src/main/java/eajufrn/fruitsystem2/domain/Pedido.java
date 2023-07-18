@@ -38,6 +38,11 @@ public class Pedido extends AbstractEntity{
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL) // o mapeamento do relacionamento é feito pela propriedade "pedido" na classe "PedidoItem"
     private List<PedidoItem> pedidoItem;
 
+    @Override
+    public void partialUpdate(AbstractEntity e) {
+
+    }
+
 
     // ---------------------------------------- DTO Request ------------------------------------------------------------
 

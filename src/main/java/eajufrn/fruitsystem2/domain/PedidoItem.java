@@ -39,6 +39,11 @@ public class PedidoItem extends AbstractEntity {
     private List<Fruta> fruta; //  a propriedade "fruta" indica que cada "PedidoItem" está associado a muitas Frutas
     private Integer quantidade;
 
+    @Override
+    public void partialUpdate(AbstractEntity e) {
+
+    }
+
 
     // ---------------------------------------- DTO Request ------------------------------------------------------------
     @Data

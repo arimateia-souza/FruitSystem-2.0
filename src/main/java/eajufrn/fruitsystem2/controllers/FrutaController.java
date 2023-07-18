@@ -4,7 +4,10 @@ import eajufrn.fruitsystem2.domain.Fruta;
 import eajufrn.fruitsystem2.service.FrutaService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,18 +38,24 @@ public class FrutaController {
     }
 
 
+
     @GetMapping
-    public List<Fruta.DtoResponse> listar() {
-        //service que lista a entidade(fruta no caso)
-        List<Fruta> frutas = this.frutaService.list();
-        //
-        List<Fruta.DtoResponse> response = frutas.stream()
-                .map(fruta -> Fruta.DtoResponse.convertToDto(fruta, mapper))
-                .collect(Collectors.toList());
+    public ResponseEntity<Page<Fruta.DtoResponse>> listar(Pageable page) {
+
+        //System.out.println(page.toString());
+
+        Page<Fruta.DtoResponse> dtoResponses = frutaService
+                .find(page)
+                .map(record -> {
+                    Fruta.DtoResponse response = Fruta.DtoResponse.convertToDto(record, mapper);
+                    response.generateLinks(record.getId());
+                    return response;
+                });
 
 
-        return response;
+        return new ResponseEntity<>(dtoResponses, HttpStatus.OK);
     }
+
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
     public Fruta.DtoResponse atualizar(@Valid @RequestBody Fruta.DtoRequest fruta, @PathVariable Long id) {

@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -17,6 +19,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
+//@SQLDelete(sql = "UPDATE fruta SET deleted_at = CURRENT_TIMESTAMP WHERE id=?")
+//@Where(clause = "deleted_at is null")
 @NoArgsConstructor
 @AllArgsConstructor
 //@Table(name = "Frutas")
@@ -26,6 +30,17 @@ public class Fruta extends AbstractEntity{
     private String descricao;
     private String categoria;
     private Double preco;
+
+    @Override
+    public void partialUpdate(AbstractEntity e) {
+        if (e instanceof Fruta fruta){
+            this.nome = fruta.nome;
+            this.descricao = fruta.descricao;
+            this.preco = fruta.preco;
+            this.categoria = fruta.categoria;
+        }
+    }
+
 
 
     // ---------------------------------------- DTO Request ------------------------------------------------------------

@@ -29,6 +29,11 @@ public class Endereco extends AbstractEntity {
     @OneToOne
     private Usuario usuario;
 
+    @Override
+    public void partialUpdate(AbstractEntity e) {
+
+    }
+
     @Data
     public static class DtoRequest{
         @NotEmpty(message = "O campo 'Cidade' não pode ser vazio")

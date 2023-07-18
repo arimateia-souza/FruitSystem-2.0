@@ -28,6 +28,7 @@ public abstract class AbstractEntity {
     private LocalDateTime updatedAt;
 
 
+    public abstract void partialUpdate(AbstractEntity e);
 
     @Override
     public boolean equals(Object o) {

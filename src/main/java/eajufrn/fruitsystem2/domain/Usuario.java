@@ -40,6 +40,11 @@ public class Usuario extends AbstractEntity {
     @OneToOne(mappedBy = "usuario") // na classe Endereço temos a propriedade chamada usuário, o mapeamento é feito aqui
     private Endereco endereco;
 
+    @Override
+    public void partialUpdate(AbstractEntity e) {
+
+    }
+
 
     // ---------------------------------------- DTO Request ------------------------------------------------------------
     @Data
