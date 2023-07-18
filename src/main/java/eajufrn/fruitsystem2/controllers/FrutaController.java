@@ -40,20 +40,16 @@ public class FrutaController {
 
 
     @GetMapping
-    public ResponseEntity<Page<Fruta.DtoResponse>> listar(Pageable page) {
-
-        //System.out.println(page.toString());
-
-        Page<Fruta.DtoResponse> dtoResponses = frutaService
-                .find(page)
-                .map(record -> {
-                    Fruta.DtoResponse response = Fruta.DtoResponse.convertToDto(record, mapper);
-                    response.generateLinks(record.getId());
-                    return response;
-                });
+    public List<Fruta.DtoResponse> listar() {
+        //service que lista a entidade(fruta no caso)
+        List<Fruta> frutas = this.frutaService.list();
+        //
+        List<Fruta.DtoResponse> response = frutas.stream()
+                .map(fruta -> Fruta.DtoResponse.convertToDto(fruta, mapper))
+                .collect(Collectors.toList());
 
 
-        return new ResponseEntity<>(dtoResponses, HttpStatus.OK);
+        return response;
     }
 
     @ResponseStatus(HttpStatus.OK)

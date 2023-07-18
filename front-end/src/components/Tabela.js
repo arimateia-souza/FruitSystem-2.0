@@ -1,4 +1,5 @@
 
+import React from "react";
 
 
 function Tabela({ frutas }) {
@@ -15,8 +16,8 @@ function Tabela({ frutas }) {
                 </tr>
                 </thead>
                 <tbody>
-                {frutas.map((obj, indice) => (
-                    <tr key={indice}>
+                {frutas.map((obj) => (
+                    <tr >
                         <td className="text-center" scope="row">{obj.nome}</td>
                         <td className="text-center">R$ {obj.preco}</td>
                         <td className="text-center">{obj.categoria}</td>

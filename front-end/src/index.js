@@ -5,10 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+
+function tick(){
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
+}
+setInterval(tick,1000)
+tick();
+
 
 reportWebVitals();

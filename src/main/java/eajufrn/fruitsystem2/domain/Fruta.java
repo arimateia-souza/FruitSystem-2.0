@@ -37,7 +37,7 @@ public class Fruta extends AbstractEntity{
             this.nome = fruta.nome;
             this.descricao = fruta.descricao;
             this.preco = fruta.preco;
-            this.categoria = fruta.categoria;
+
         }
     }
 

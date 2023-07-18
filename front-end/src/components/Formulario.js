@@ -1,6 +1,6 @@
 
 
-function Formulario() {
+export default function Formulario() {
 
     return (
         <div className="container px-4 px-lg-5 mt-5">
@@ -25,7 +25,7 @@ function Formulario() {
                         <label className="mr-sm-2" htmlFor="inlineFormCustomSelect">Categoria:</label>
                         <div className="input-group">
                             <select className="form-control custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                <option selected>Selecione uma categoria</option>
+                                <option selected>Selecione uma categoria...</option>
                                 <option value="cítricas">Cítricas</option>
                                 <option value="tropicais">Tropicais</option>
                                 <option value="vermelha">Vermelha</option>
@@ -42,4 +42,3 @@ function Formulario() {
     );
 }
 
-export default Formulario;

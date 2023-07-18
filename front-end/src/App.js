@@ -3,7 +3,9 @@ import './App.css';
 import Formulario from "./components/Formulario";
 import Tabela from "./components/Tabela";
 import {useEffect, useState} from "react";
-import Navbar from "./components/navbar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 
 function App() {
 
@@ -19,15 +21,15 @@ function App() {
 
 
 
-  return (
-    <div>
-        <Navbar/>
+    return (
+        <div>
+            <Header/>
+            <Formulario/>
+            <Tabela frutas={produtos}/>
+            <Footer/>
 
-        <Tabela frutas={produtos}/>
-        <Formulario/>
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;
