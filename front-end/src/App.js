@@ -29,10 +29,10 @@ function App() {
 
 
 
+
     return (
         <div>
             <Header/>
-            <p>{JSON.stringify(objProduto)}</p>
             <Formulario />
 
             <Tabela frutas={frutas}/>

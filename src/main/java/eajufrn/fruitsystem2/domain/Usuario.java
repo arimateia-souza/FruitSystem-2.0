@@ -24,8 +24,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @AllArgsConstructor
 @Entity
 //@Table(name = "Usuarios")
-@SQLDelete(sql = "UPDATE usuario SET deleted_at = CURRENT_TIMESTAMP WHERE id=?")
-@Where(clause = "deletedAt is null")
+//@SQLDelete(sql = "UPDATE usuario SET deletedAt = CURRENT_TIMESTAMP WHERE id=?")
+//@Where(clause = "deletedAt is null")
 public class Usuario extends AbstractEntity {
 
     @NotBlank

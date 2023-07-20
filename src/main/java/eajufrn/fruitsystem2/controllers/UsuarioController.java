@@ -32,7 +32,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<DtoResponse> list() {
+    public List<Usuario.DtoResponse> list() {
         return service.list().stream()
                 .map(usuario -> {
                     Usuario.DtoResponse response = Usuario.DtoResponse.convertToDto(usuario, mapper);
